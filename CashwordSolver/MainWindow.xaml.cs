@@ -97,8 +97,19 @@ namespace CashwordSolver
                     bool lettersLeft = i > 0 ? LetterGrid.Get(i - 1, j) != null : false;
                     bool lettersRight = i < GRID_SIZE - 1 ? LetterGrid.Get(i + 1, j) != null : false;
 
-                    if (!lettersAbove && lettersBelow) { }
-                    if (!lettersLeft && lettersRight) { }
+                    // Check if there is a valid word on the vertical axis
+                    if (!lettersAbove && lettersBelow)
+                    {
+                        String verticalStr = VerticalScan(i, j);
+                        if (VerifyWord(verticalStr)) result++;
+                    }
+
+                    // Check if there is a valid word on the horizontal axis
+                    if (!lettersLeft && lettersRight)
+                    {
+                        String horizontalStr = HorizontalScan(i, j);
+                        if(VerifyWord(horizontalStr)) result++;
+                    }
                 }
             }
 
