@@ -85,23 +85,6 @@ namespace CashwordSolver
         }
 
         /// <summary>
-        /// Check if word contains only characters in matchSet
-        /// </summary>
-        /// <param name="word">Word being checked against the winning letters</param>
-        public bool VerifyWord(String word)
-        {
-            if (word.Length == 0) return false; // Check if word is empty (invalid)
-
-            // Check that each char in word is valid
-            foreach (char ch in word)
-            {
-                if (!matchSet.Contains(ch)) return false;
-            }
-
-            return true; // No invalid chars detected
-        }
-
-        /// <summary>
         /// Scans LetterGrid for any words to be considered for score calculation
         /// </summary>
         /// <returns>The number of valid words</returns>
@@ -182,6 +165,23 @@ namespace CashwordSolver
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Check if word contains only characters in matchSet
+        /// </summary>
+        /// <param name="word">Word being checked against the winning letters</param>
+        public bool VerifyWord(String word)
+        {
+            if (word.Length == 0) return false; // Check if word is empty (invalid)
+
+            // Check that each char in word is valid
+            foreach (char ch in word)
+            {
+                if (!matchSet.Contains(ch)) return false;
+            }
+
+            return true; // No invalid chars detected
         }
     }
 }
