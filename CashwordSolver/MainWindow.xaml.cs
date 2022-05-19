@@ -64,6 +64,9 @@ namespace CashwordSolver
         }
 
         // TODO: Call method on button press
+        /// <summary>
+        /// Insert the values of the cells in LetterGrid to the gridArray char array
+        /// </summary>
         public void TransferToGridArray()
         {
             int i = 0, j = 0;
