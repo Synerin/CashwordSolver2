@@ -23,6 +23,7 @@ namespace CashwordSolver
         // TODO: Add trigger to update set when WinningLetters is updated
         HashSet<char> matchSet; // Set of winning letters
         int GRID_SIZE; // Size of rows and cols in grid
+        char[,] gridArray; // LetterGrid converted to a char array
 
         public MainWindow()
         {
@@ -30,9 +31,9 @@ namespace CashwordSolver
 
             matchSet = new HashSet<char>();
             GRID_SIZE = LetterGrid.RowDefinitions.Count;
+            gridArray = new char[GRID_SIZE, GRID_SIZE];
 
             InitializeLetterGrid();
-            
         }
 
         /// <summary>
@@ -58,6 +59,27 @@ namespace CashwordSolver
 
                     // Insert square
                     LetterGrid.Children.Add(square);
+                }
+            }
+        }
+
+        // TODO: Call method on button press
+        public void TransferToGridArray()
+        {
+            int i = 0, j = 0;
+
+            // Fill gridArray with the cells from LetterGrid
+            foreach(var cell in LetterGrid.Children)
+            {
+                gridArray[i, j] = (char)cell;
+
+                i++;
+
+                // Loop around to the front
+                if(i == GRID_SIZE)
+                {
+                    i = 0;
+                    j++;
                 }
             }
         }
