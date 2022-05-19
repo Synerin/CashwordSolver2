@@ -185,5 +185,25 @@ namespace CashwordSolver
 
             return true; // No invalid chars detected
         }
+
+        /// <summary>
+        /// Set up remaining components and report score
+        /// </summary>
+        public void Submit() {
+            // Add winning letters to matchSet
+            foreach(char ch in WinningLetters.Text)
+            {
+                matchSet.Add(ch);
+            }
+
+            // Set up gridArray
+            TransferToGridArray();
+
+            // Scan grid for matching words
+            int matchingWords = ScanGrid();
+
+            // Report score
+            Score.Text = "" + matchingWords;
+        }
     }
 }
