@@ -21,23 +21,28 @@ namespace CashwordSolver
     public partial class MainWindow : Window
     {
         // TODO: Add trigger to update set when WinningLetters is updated
-        HashSet<char> matchSet = new HashSet<char>(); // Set of winning letters
+        HashSet<char> matchSet; // Set of winning letters
+        int GRID_SIZE; // Size of rows and cols in grid
+
         public MainWindow()
         {
             InitializeComponent();
+
+            matchSet = new HashSet<char>();
+            GRID_SIZE = LetterGrid.RowDefinitions.Count;
+
             InitializeLetterGrid();
             
         }
 
         /// <summary>
-        /// Set up blank spaces for all cells in LetterGrid,
-        /// which are to be filled in by the user
+        /// Set up blank spaces for all cells in LetterGrid, which are to be filled in by the user
         /// </summary>
         public void InitializeLetterGrid()
         {
-            for (int i = 0; i < LetterGrid.RowDefinitions.Count; i++)
+            for (int i = 0; i < GRID_SIZE; i++)
             {
-                for (int j = 0; j < LetterGrid.ColumnDefinitions.Count; j++)
+                for (int j = 0; j < GRID_SIZE; j++)
                 {
                     TextBox square = new()
                     {
@@ -56,19 +61,19 @@ namespace CashwordSolver
                 }
             }
         }
-        
+
         /// <summary>
         /// Check if word contains only characters in matchSet
         /// </summary>
         /// <param name="word"> Word being checked against the winning letters </param>
         public bool VerifyWord(String word)
         {
-            if(word.Length == 0) return false; // Check if word is empty (invalid)
+            if (word.Length == 0) return false; // Check if word is empty (invalid)
 
             // Check that each char in word is valid
-            foreach(char ch in word)
+            foreach (char ch in word)
             {
-                if(!matchSet.Contains(ch)) return false;
+                if (!matchSet.Contains(ch)) return false;
             }
 
             return true; // No invalid chars detected
