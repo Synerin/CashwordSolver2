@@ -99,11 +99,10 @@ namespace CashwordSolver
             {
                 for (int j = 0; j < GRID_SIZE; j++)
                 {
-                    // TODO: Change Grid to DataGrid and/or figure out how to get child at (x, y)
-                    bool lettersAbove = j > 0 ? LetterGrid.Get(i, j - 1) != null : false;
-                    bool lettersBelow = j < GRID_SIZE - 1 ? LetterGrid.Get(i, j + 1) != null : false;
-                    bool lettersLeft = i > 0 ? LetterGrid.Get(i - 1, j) != null : false;
-                    bool lettersRight = i < GRID_SIZE - 1 ? LetterGrid.Get(i + 1, j) != null : false;
+                    bool lettersAbove = j > 0 && Char.IsLetter(gridArray[i, j - 1]);
+                    bool lettersBelow = j < GRID_SIZE - 1 && Char.IsLetter(gridArray[i, j + 1]);
+                    bool lettersLeft = i > 0 && Char.IsLetter(gridArray[i - 1, j]);
+                    bool lettersRight = i < GRID_SIZE - 1 && Char.IsLetter(gridArray[i + 1, j]);
 
                     // Check if there is a valid word on the vertical axis
                     if (!lettersAbove && lettersBelow)
@@ -136,7 +135,7 @@ namespace CashwordSolver
 
             while(i < GRID_SIZE)
             {
-                char ch = LetterGrid.Get(i, j); // Get letter at current position
+                char ch = gridArray[i, j]; // Get letter at current position
 
                 if (!Char.IsLetter(ch)) break; // End of word
 
@@ -159,7 +158,7 @@ namespace CashwordSolver
 
             while (j < GRID_SIZE)
             {
-                char ch = LetterGrid.Get(i, j); // Get letter at current position
+                char ch = gridArray[i, j]; // Get letter at current position
 
                 if (!Char.IsLetter(ch)) break; // End of word
 
