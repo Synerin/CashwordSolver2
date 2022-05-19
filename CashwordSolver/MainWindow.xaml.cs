@@ -65,7 +65,7 @@ namespace CashwordSolver
         /// <summary>
         /// Check if word contains only characters in matchSet
         /// </summary>
-        /// <param name="word"> Word being checked against the winning letters </param>
+        /// <param name="word">Word being checked against the winning letters</param>
         public bool VerifyWord(String word)
         {
             if (word.Length == 0) return false; // Check if word is empty (invalid)
@@ -79,6 +79,10 @@ namespace CashwordSolver
             return true; // No invalid chars detected
         }
 
+        /// <summary>
+        /// Scans LetterGrid for any words to be considered for score calculation
+        /// </summary>
+        /// <returns>The number of valid words</returns>
         public int ScanGrid()
         {
             int result = 0;
@@ -99,6 +103,52 @@ namespace CashwordSolver
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Finds a word on the vertical axis of LetterGrid
+        /// </summary>
+        /// <param name="i">The beginning row of the word</param>
+        /// <param name="j">The column of the word</param>
+        /// <returns>The word found on column j</returns>
+        public String VerticalScan(int i, int j)
+        {
+            StringBuilder sb = new();
+
+            while(i < GRID_SIZE)
+            {
+                char ch = LetterGrid.Get(i, j); // Get letter at current position
+
+                if (!Char.IsLetter(ch)) break; // End of word
+
+                sb.Append(ch);
+                i++;
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Finds a word on the horizontal axis of LetterGrid
+        /// </summary>
+        /// <param name="i">The row of the word</param>
+        /// <param name="j">The beginning column of the word</param>
+        /// <returns>The word found on row i</returns>
+        public String HorizontalScan(int i, int j)
+        {
+            StringBuilder sb = new();
+
+            while (j < GRID_SIZE)
+            {
+                char ch = LetterGrid.Get(i, j); // Get letter at current position
+
+                if (!Char.IsLetter(ch)) break; // End of word
+
+                sb.Append(ch);
+                j++;
+            }
+
+            return sb.ToString();
         }
     }
 }
