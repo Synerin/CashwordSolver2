@@ -78,5 +78,27 @@ namespace CashwordSolver
 
             return true; // No invalid chars detected
         }
+
+        public int ScanGrid()
+        {
+            int result = 0;
+
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+                for (int j = 0; j < GRID_SIZE; j++)
+                {
+                    // TODO: Change Grid to DataGrid and/or figure out how to get child at (x, y)
+                    bool lettersAbove = j > 0 ? LetterGrid.Get(i, j - 1) != null : false;
+                    bool lettersBelow = j < GRID_SIZE - 1 ? LetterGrid.Get(i, j + 1) != null : false;
+                    bool lettersLeft = i > 0 ? LetterGrid.Get(i - 1, j) != null : false;
+                    bool lettersRight = i < GRID_SIZE - 1 ? LetterGrid.Get(i + 1, j) != null : false;
+
+                    if (!lettersAbove && lettersBelow) { }
+                    if (!lettersLeft && lettersRight) { }
+                }
+            }
+
+            return result;
+        }
     }
 }
