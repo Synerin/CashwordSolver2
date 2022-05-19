@@ -49,5 +49,13 @@
         </Grid>
 
         <Button x:Name="SubmitBtn" Content="Submit" Padding="25,0,25,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Cambria" FontSize="16" FontWeight="Normal"></Button>
+
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Height="200" Visibility="Visible">
+            <Label Content="Matching Words" FontSize="16">
+            </Label>
+
+            <TextBox x:Name="Score" VerticalAlignment="Center" Background="#FFEEEEEE">
+            </TextBox>
+        </Grid>
     </Grid>
 </Window>
