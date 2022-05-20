@@ -72,9 +72,16 @@ namespace CashwordSolver
             int i = 0, j = 0;
 
             // Fill gridArray with the cells from LetterGrid
-            foreach(var cell in LetterGrid.Children)
+            foreach(TextBox cell in LetterGrid.Children)
             {
-                gridArray[i, j] = (char)cell; // TODO: Correctly parse LetterGrid children
+                try
+                {
+                    gridArray[i, j] = Char.Parse(cell.Text); // Can parse a char from the cell at (i, j)
+                }
+                catch
+                {
+                    gridArray[i, j] = ' '; // Could not parse a char, set index (i, j) to a blank space
+                }
 
                 i++;
 
