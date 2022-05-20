@@ -48,6 +48,7 @@ namespace CashwordSolver
                     TextBox square = new()
                     {
                         MaxLength = 1, // Limit each cell to a length of one character
+                        CharacterCasing = CharacterCasing.Upper, // Automatically capitalize letter input
                         // Fill cell box
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch
@@ -115,14 +116,22 @@ namespace CashwordSolver
                     if (!lettersAbove && lettersBelow)
                     {
                         String verticalStr = VerticalScan(i, j);
-                        if (VerifyWord(verticalStr)) result++;
+                        if (VerifyWord(verticalStr))
+                        {
+                            result++;
+                            System.Diagnostics.Debug.WriteLine(verticalStr);
+                        }
                     }
 
                     // Check if there is a valid word on the horizontal axis
                     if (!lettersLeft && lettersRight)
                     {
                         String horizontalStr = HorizontalScan(i, j);
-                        if(VerifyWord(horizontalStr)) result++;
+                        if(VerifyWord(horizontalStr))
+                        {
+                            result++;
+                            System.Diagnostics.Debug.WriteLine(horizontalStr);
+                        }
                     }
                 }
             }

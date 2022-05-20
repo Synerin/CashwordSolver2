@@ -14,7 +14,7 @@
             <Label Content="Your Winning Letters" FontSize="16">
             </Label>
 
-            <TextBox x:Name="WinningLetters" VerticalAlignment="Center" Background="#FFEEEEEE">
+            <TextBox x:Name="WinningLetters" CharacterCasing="Upper" VerticalAlignment="Center" Background="#FFEEEEEE">
             </TextBox>
         </Grid>
         
