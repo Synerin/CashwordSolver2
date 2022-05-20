@@ -196,7 +196,7 @@ namespace CashwordSolver
         /// <summary>
         /// Set up remaining components and report score
         /// </summary>
-        public void Submit(object sender, RoutedEventArgs e) {
+        private void Submit(object sender, RoutedEventArgs e) {
             // Add winning letters to matchSet
             foreach(char ch in WinningLetters.Text)
             {
@@ -211,11 +211,6 @@ namespace CashwordSolver
 
             // Report score
             Score.Text = "" + matchingWords;
-        }
-
-        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
