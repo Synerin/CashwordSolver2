@@ -74,7 +74,7 @@ namespace CashwordSolver
             // Fill gridArray with the cells from LetterGrid
             foreach(var cell in LetterGrid.Children)
             {
-                gridArray[i, j] = (char)cell;
+                gridArray[i, j] = (char)cell; // TODO: Correctly parse LetterGrid children
 
                 i++;
 
@@ -189,7 +189,7 @@ namespace CashwordSolver
         /// <summary>
         /// Set up remaining components and report score
         /// </summary>
-        public void Submit() {
+        public void Submit(object sender, RoutedEventArgs e) {
             // Add winning letters to matchSet
             foreach(char ch in WinningLetters.Text)
             {
@@ -204,6 +204,11 @@ namespace CashwordSolver
 
             // Report score
             Score.Text = "" + matchingWords;
+        }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
