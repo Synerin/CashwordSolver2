@@ -119,7 +119,6 @@ namespace CashwordSolver
                         if (VerifyWord(verticalStr))
                         {
                             result++;
-                            System.Diagnostics.Debug.WriteLine(verticalStr);
                         }
                     }
 
@@ -130,7 +129,6 @@ namespace CashwordSolver
                         if(VerifyWord(horizontalStr))
                         {
                             result++;
-                            System.Diagnostics.Debug.WriteLine(horizontalStr);
                         }
                     }
                 }
@@ -142,21 +140,21 @@ namespace CashwordSolver
         /// <summary>
         /// Finds a word on the vertical axis of LetterGrid
         /// </summary>
-        /// <param name="i">The beginning row of the word</param>
-        /// <param name="j">The column of the word</param>
-        /// <returns>The word found on column j</returns>
+        /// <param name="i">The column of the word</param>
+        /// <param name="j">The beginning row of the word</param>
+        /// <returns>The word found on column i</returns>
         public String VerticalScan(int i, int j)
         {
             StringBuilder sb = new();
 
-            while(i < GRID_SIZE)
+            while(j < GRID_SIZE)
             {
                 char ch = gridArray[i, j]; // Get letter at current position
 
                 if (!Char.IsLetter(ch)) break; // End of word
 
                 sb.Append(ch);
-                i++;
+                j++;
             }
 
             return sb.ToString();
@@ -165,21 +163,21 @@ namespace CashwordSolver
         /// <summary>
         /// Finds a word on the horizontal axis of LetterGrid
         /// </summary>
-        /// <param name="i">The row of the word</param>
-        /// <param name="j">The beginning column of the word</param>
+        /// <param name="i">The beginning column of the word</param>
+        /// <param name="j">The row of the word</param>
         /// <returns>The word found on row i</returns>
         public String HorizontalScan(int i, int j)
         {
             StringBuilder sb = new();
 
-            while (j < GRID_SIZE)
+            while (i < GRID_SIZE)
             {
                 char ch = gridArray[i, j]; // Get letter at current position
 
                 if (!Char.IsLetter(ch)) break; // End of word
 
                 sb.Append(ch);
-                j++;
+                i++;
             }
 
             return sb.ToString();
