@@ -51,7 +51,10 @@ namespace CashwordSolver
                         CharacterCasing = CharacterCasing.Upper, // Automatically capitalize letter input
                         // Fill cell box
                         HorizontalAlignment = HorizontalAlignment.Stretch,
-                        VerticalAlignment = VerticalAlignment.Stretch
+                        VerticalAlignment = VerticalAlignment.Center,
+                        TextAlignment = TextAlignment.Center,
+                        BorderThickness = new Thickness(0),
+                        Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5CC3F0"))
                     };
 
                     // Set square coordinates as (i, j)
