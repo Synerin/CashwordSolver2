@@ -189,7 +189,7 @@ namespace CashwordSolver
         /// <param name="word">Word being checked against the winning letters</param>
         public bool VerifyWord(String word)
         {
-            if (word.Length == 0) return false; // Check if word is empty (invalid)
+            if (word.Length < 2) return false; // Check if word is too short (invalid)
 
             // Check that each char in word is valid
             foreach (char ch in word)
