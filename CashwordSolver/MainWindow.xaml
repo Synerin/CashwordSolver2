@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashwordSolver"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Cashword! Solver v2.0" Height="500" Width="800">
     <Grid>
         <Label Content="Cashword!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cambria" Grid.RowSpan="2">
         </Label>
